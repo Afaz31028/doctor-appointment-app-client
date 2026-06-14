@@ -15,7 +15,7 @@ const Footer = () => {
                     <p className="text-2xl font-bold"><span className="text-red-600">A</span><span>LPH</span><span>A</span></p>
                 </div>
                 <p className='max-w-90 text-sm text-gray-200 my-2'>Alpha Diagnostic Center provides the best services and ensures best treatment. Contact us with our helpline.</p>
-                <p className='text-xl mt-3 font-bold text-yellow-400'>Our Helplines: (Avalible: 8am-10pm)</p>
+                <p className='text-xl mt-3 font-bold text-yellow-400'>Our Helplines: (Available: 8am-10pm)</p>
                <div className='flex gap-2 items-center text-lg'>
                     <MdAddCall />
                     <p>+8801715-111222</p>
