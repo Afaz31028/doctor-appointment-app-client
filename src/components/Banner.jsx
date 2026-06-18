@@ -1,70 +1,60 @@
 "use client";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import { Autoplay } from "swiper/modules";
 
-import "swiper/css";
-import "swiper/css/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { MdCall } from "react-icons/md";
+
+const images = [
+    "/assets/banner-1.jpg",
+    "/assets/banner-2.jpg",
+    "/assets/banner-4.jpg",
+];
 
 export default function Banner() {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % images.length);
+        }, 3000); // change every 3 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <div className="bg-indigo-50 flex w-full mx-auto px-25">
-            <div className="flex justify-center items-center bg-blue-100 w-full">
-                <div>
-                    <div className="relative">
-                        <p className="text-5xl font-extrabold text-yellow-600">Welcome</p>
-                        <p className="text-3xl absolute top-11 left-14 font-extrabold">Dear Guest</p>
+        <div className="relative max-w-full mx-auto h-180 overflow-hidden">
+            <AnimatePresence mode="wait">
+                <motion.img
+                    key={index}
+                    src={images[index]}
+                    alt="banner"
+                    className="absolute w-full h-full object-cover blur-out-lg"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 3 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1, ease: "easeInOut"}}
+                />
+            </AnimatePresence>
+
+            {/* Text Content */}
+            <div className="relative max-w-2xl">
+                <div className="absolute left-0 top-0 z-12 flex justify-center items-center mt-0 w-175 h-200 px-20 bg-black/5 backdrop-blur-sm border-none">
+                <div className="text-white">
+                    <h1 className="text-8xl font-bold">Welcome</h1>
+                    <p className="mt-4 text-4xl ">Recieves The best Sevices</p>
+                    <p className="mt-4 text-4xl">For Appointment, Visit Our Website</p>
+                    <p className="mt-15 text-4xl font-extrabold text-amber-500">Our Helpline: (8am to 9pm)</p>
+                    <div className="flex gap-1 items-center mt-2 text-2xl font-extrabold">
+                        <MdCall className="text-4xl font-bold" />
+                        <p>+08801715-111222</p>
                     </div>
-                    <div className="relative">
-                        <p className="text-4xl font-bold mt-15 text-red-600">Receieves</p>
-                        <p className="text-2xl font-bold mt-1 absolute top-8 left-5">Our Best Services</p>
-                    </div>
-                    <div className="relative">
-                        <p className="text-4xl font-bold mt-10 text-red-600">Checkup</p>
-                        <p className="text-2xl font-bold mt-1 absolute top-8 left-5">With Our Experts</p>
+                    <div className="flex gap-1 items-center mt-2 text-2xl font-extrabold">
+                        <MdCall className="text-4xl font-bold"/>
+                        <p>+08801815-111222</p>
                     </div>
                 </div>
             </div>
-            <Swiper className="max-w-5xl"
-                modules={[Autoplay]}
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }}
-                loop={true}
-            >
-                <SwiperSlide>
-                    <Image
-                        src="/assets/banner-1.png"
-                        alt="Banner 1"
-                        width={1200}
-                        height={500}
-                        className="w-full h-150"
-                    />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="flex gap-5">
-                        <Image
-                            src="/assets/banner-2.png"
-                            alt="Banner 2"
-                            width={1200}
-                            height={500}
-                            className="w-full h-150"
-                        />
-
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide className="flex gap-10">
-                    <Image
-                        src="/assets/banner-3.png"
-                        alt="Banner 3"
-                        width={1200}
-                        height={500}
-                        className="w-full h-150"
-                    />
-                </SwiperSlide>
-            </Swiper>
+            </div>
         </div>
     );
 }
