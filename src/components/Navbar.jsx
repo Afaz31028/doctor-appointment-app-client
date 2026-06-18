@@ -1,7 +1,8 @@
 'use client'
 import { useState } from "react";
-import { Link, Button } from "@heroui/react";
+import {Button } from "@heroui/react"
 import { FaStethoscope } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,8 +58,8 @@ export default function Navbar() {
             }
         </ul>
         <div className="hidden items-center gap-4 md:flex">
-              <Button variant="outline" className="w-full border-emerald-600 text-emerald-600 rounded-none">Login</Button>
-              <Button className="w-full rounded-none">Sign Up</Button>
+              <Button variant="outline" className="w-full border-emerald-600 text-emerald-600 rounded-none"><Link href='/login'>Login</Link></Button>
+              <Button className="w-full rounded-none"><Link href='/signup'>Sign Up</Link></Button>
         </div>
       </header>
       {isMenuOpen && (
@@ -68,8 +69,8 @@ export default function Navbar() {
                 menuItems.map((menuItem,index)=><li key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
             }
             <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Button className="w-full rounded-none">Login</Button>
-              <Button className="w-full rounded-none">Sign Up</Button>
+              <Button className="w-full rounded-none"><Link href='/signup'>Login</Link></Button>
+              <Button className="w-full rounded-none"><Link href='/signup'>Sign Up</Link></Button>
             </li>
           </ul>
         </div>
