@@ -69,7 +69,7 @@ export default function Navbar() {
                 menuItems.map((menuItem,index)=><li key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
             }
             <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Button className="w-full rounded-none"><Link href='/signup'>Login</Link></Button>
+              <Button className="w-full rounded-none"><Link href='/login'>Login</Link></Button>
               <Button className="w-full rounded-none"><Link href='/signup'>Sign Up</Link></Button>
             </li>
           </ul>

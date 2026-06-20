@@ -1,9 +1,9 @@
 import { Label, ListBox, Select } from "@heroui/react";
 
-export function SelectOptions({ title, data}) {
+export function SelectOptions({ title, data, onSelectionChange}) {
     const {availability, availableDays} = data;
     return (
-        <Select className="w-full" placeholder="Select one">
+        <Select className="w-full" placeholder="Select one" onSelectionChange={(keys) => onSelectionChange?.([...keys].join(""))}>
             <Label>{title}</Label>
             <Select.Trigger>
                 <Select.Value />

@@ -1,21 +1,50 @@
 "use client";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import { SelectOptions } from "./SelectOptions";
+import { authClient } from "@/lib/auth-client";
+import { useState } from "react";
 
 export function AppointmentForm({data}) {
     const {_id,name,specialty}= data;
+
+    const [selectedDay, setSelectedDay] = useState("");
+    const [selectedTime, setSelectedTime] = useState("");
+    
+    const { data: session } = authClient.useSession() 
+    const user= session?.user;
+
     // console.log(data)
   const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const doctorData= Object.fromEntries(formData.entries());
-    // console.log(data)
+    const patientData= Object.fromEntries(formData.entries());
+    patientData.availableDay= selectedDay
+    patientData.availableTime= selectedTime;
+
+    // console.log(patientData)
+    const appointmentInfo={
+        userId: user?.id,
+        userName: user?.name,
+        userEmail: user?.email,
+        patientId: _id,
+        doctorName: patientData["doctor-name"],
+        specialist: patientData.department,
+        patientName: patientData.name,
+        patientContact: patientData["phone-number"],
+        appointmentDay: patientData.availableDay,
+        appointmentTime: patientData.availableTime,
+
+        date: new Date().toLocaleDateString("en-GB", {
+            day: "numeric", month: "long",year: "numeric",
+          })
+    } 
+    // console.log(appointmentInfo);
     const res= await fetch(`http://localhost:5000/doctors/${_id}/appointments`, {
         method:"POST",
         headers:{
             "Content-Type":"Application/json"
         },
-        body: JSON.stringify(doctorData)
+        body: JSON.stringify(appointmentInfo)
     })
     const data= await res.json();
   };
@@ -40,9 +69,10 @@ export function AppointmentForm({data}) {
       </TextField>
       <TextField
         isRequired
-        name="Department"
+        name="department"
         type="text"
         defaultValue={specialty}
+        isReadOnly={true}
       >
         <Label>Department</Label>
         <Input />
@@ -52,12 +82,13 @@ export function AppointmentForm({data}) {
         name="doctor-name"
         type="text"
         defaultValue={name}
+        isReadOnly={true}
       >
         <Label>Doctor Name</Label>
         <Input/>
       </TextField>
-      <SelectOptions title="Available Day" data={data}></SelectOptions>
-      <SelectOptions title="Available Time" data={data}></SelectOptions>
+      <SelectOptions title="Available Day" onSelectionChange={(val) => setSelectedDay(val)} data={data}></SelectOptions>
+      <SelectOptions title="Available Time" onSelectionChange={(val) => setSelectedTime(val)} data={data}></SelectOptions>
       <div className="flex gap-2">
         <Button type="submit">
           {/* <Check /> */}
