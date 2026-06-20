@@ -33,7 +33,7 @@ const AppointmentEditForm = ({appointment}) => {
         appointmentDay: patientData.availableDay,
         appointmentTime: patientData.availableTime,
 
-        date: new Date().toLocaleDateString("en-GB", {
+        date: new Date().toLocaleDateString(undefined, {
             day: "numeric", month: "long",year: "numeric",
           })
     } 

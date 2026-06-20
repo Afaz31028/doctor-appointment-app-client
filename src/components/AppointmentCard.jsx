@@ -1,6 +1,7 @@
 import { Button } from '@heroui/react';
 import React from 'react';
 import AppointmentEditModal from './AppointmentEditModal';
+import { DeleteAppointmentModal } from './DeleteAppointmentModal';
 
 const AppointmentCard = ({appointment}) => {
     const {patientName, patientContact, doctorName, specialist, date, appointmentDay, appointmentTime} = appointment;
@@ -18,8 +19,7 @@ const AppointmentCard = ({appointment}) => {
             </div>
             <div>
                 <AppointmentEditModal appointment={appointment}></AppointmentEditModal>
-                <Button variant='danger' className={'mt-5 w-30'}>Delete</Button>
-                
+                <DeleteAppointmentModal appointment={appointment}></DeleteAppointmentModal>
             </div>
         </div>
     );
