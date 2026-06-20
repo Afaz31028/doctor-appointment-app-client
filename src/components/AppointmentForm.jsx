@@ -26,7 +26,7 @@ export function AppointmentForm({data}) {
         userId: user?.id,
         userName: user?.name,
         userEmail: user?.email,
-        patientId: _id,
+        doctorId: _id,
         doctorName: patientData["doctor-name"],
         specialist: patientData.department,
         patientName: patientData.name,
@@ -39,10 +39,11 @@ export function AppointmentForm({data}) {
           })
     } 
     // console.log(appointmentInfo);
+
     const res= await fetch(`http://localhost:5000/doctors/${_id}/appointments`, {
         method:"POST",
         headers:{
-            "Content-Type":"Application/json"
+            "Content-Type":"application/json"
         },
         body: JSON.stringify(appointmentInfo)
     })

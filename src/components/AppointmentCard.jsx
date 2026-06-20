@@ -1,8 +1,10 @@
 import { Button } from '@heroui/react';
 import React from 'react';
+import AppointmentEditModal from './AppointmentEditModal';
 
 const AppointmentCard = ({appointment}) => {
     const {patientName, patientContact, doctorName, specialist, date, appointmentDay, appointmentTime} = appointment;
+    console.log(appointment)
     return (
         <div className='max-w-4xl mx-auto border-2 px-5 py-3 rounded-2xl bg-gray-100 font-serif flex justify-between items-center'>
             <div className='w-full'>
@@ -15,7 +17,7 @@ const AppointmentCard = ({appointment}) => {
                 <p>Appointment Booking date: <span className='font-semibold text-blue-700'>{date}</span></p>
             </div>
             <div>
-                <Button className={'bg-green-500 w-30'}>Edit</Button>
+                <AppointmentEditModal appointment={appointment}></AppointmentEditModal>
                 <Button variant='danger' className={'mt-5 w-30'}>Delete</Button>
                 
             </div>

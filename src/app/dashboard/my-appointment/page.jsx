@@ -10,9 +10,8 @@ const MyAppointmentPage = async() => {
     })
     const user= session?.user;
 
-    const res = await fetch(`http://localhost:5000/appointments/${user.id}`);
+    const res = await fetch(`http://localhost:5000/appointments/user/${user.id}`);
     const appointmentsData= await res.json();
-    // console.log(appointmentsData);
 
     return (
         <div>
