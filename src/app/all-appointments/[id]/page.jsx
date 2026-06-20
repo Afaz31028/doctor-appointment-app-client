@@ -1,8 +1,5 @@
 import { AppointmentModal } from '@/components/AppointmentModal';
-import { getAllDoctorsInfo } from '@/lib/data';
-import { Button, Card } from '@heroui/react';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 const DoctorDetailsPage = async ({ params }) => {

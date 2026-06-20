@@ -7,12 +7,19 @@ import {
   Form,
   Input,
   Label,
+  Separator,
   TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
   const router = useRouter();
+   const signInWithGoogle = async () => {
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -88,6 +95,17 @@ const LoginPage = () => {
               Login
             </Button>
           </div>
+           <div>
+                    <div className="flex items-center gap-1 my-3">
+                      <Separator className="flex-1" orientation="horizontal" />
+                      <span className="text-amber-600 text-sm font-bold">OR</span>
+                      <Separator className="flex-1" orientation="horizontal" />
+                    </div>
+                    <Button className="w-full mt-1" variant="tertiary" onClick={signInWithGoogle}>
+                      <FcGoogle />
+                      Sign in with Google
+                    </Button>
+                  </div>
         </Form>
       </div>
     </div>
