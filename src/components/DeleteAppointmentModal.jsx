@@ -1,10 +1,9 @@
 "use client";
 import {AlertDialog, Button} from "@heroui/react";
-import { redirect, useRouter } from "next/navigation";
+import { redirect} from "next/navigation";
+import { toast } from "react-toastify";
 
 export function DeleteAppointmentModal({appointment}) {
-
-    const router = useRouter();
 
     const handleDelete =async()=>{
         const res= await fetch(`http://localhost:5000/appointments/${appointment._id}`, {
@@ -12,7 +11,15 @@ export function DeleteAppointmentModal({appointment}) {
         })
         const data = await res.json();
         if(res.ok){
+            toast.success("Delete Appointment Successfully",{
+                theme: "dark"
+            })
             redirect('/dashboard/my-appointment')
+        }
+        else{
+            toast.error("Delete Failed", {
+                theme: "dark"
+            })
         }
     }
   return (
@@ -33,7 +40,7 @@ export function DeleteAppointmentModal({appointment}) {
               <Button slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button slot="close" variant="danger" onClick={handleDelete}>
+              <Button slot="close" variant="danger" onClick={handleDelete} >
                 Delete Appointment
               </Button>
             </AlertDialog.Footer>
