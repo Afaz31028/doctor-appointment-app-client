@@ -10,7 +10,15 @@ const MyAppointmentPage = async() => {
     })
     const user= session?.user;
 
-    const res = await fetch(`http://localhost:5000/appointments/user/${user.id}`);
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`http://localhost:5000/appointments/user/${user.id}`,{
+        headers:{
+            authorization: `Bearer ${token}`
+        }
+    });
     const appointmentsData= await res.json();
 
     return (

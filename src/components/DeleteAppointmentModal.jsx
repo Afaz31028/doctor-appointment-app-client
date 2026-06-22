@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import { redirect} from "next/navigation";
 import { toast } from "react-toastify";
@@ -6,8 +7,12 @@ import { toast } from "react-toastify";
 export function DeleteAppointmentModal({appointment}) {
 
     const handleDelete =async()=>{
+        const {data: tokenData} = await authClient.token();
         const res= await fetch(`http://localhost:5000/appointments/${appointment._id}`, {
-            method:"DELETE"
+            method:"DELETE",
+            headers:{
+                authorization: `Bearer ${tokenData?.token}`
+            }
         })
         const data = await res.json();
         if(res.ok){

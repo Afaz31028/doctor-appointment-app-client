@@ -1,4 +1,5 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import { Label, ListBox, Select } from "@heroui/react";
 import { useEffect, useState } from "react";
 const SelectEditOption = ({title, appointment, onSelectionChange}) => {
@@ -8,7 +9,14 @@ const SelectEditOption = ({title, appointment, onSelectionChange}) => {
 
     useEffect(() => {
         const fetchDoctor = async () => {
-            const res = await fetch(`http://localhost:5000/doctors/${appointment.doctorId}`);
+
+            const {data: tokenData}= await authClient.token();
+
+            const res = await fetch(`http://localhost:5000/doctors/${appointment.doctorId}`, {
+                headers:{
+                    authorization: `Bearer ${tokenData?.token}`
+                }
+            });
             const data = await res.json();
 
             setAvailableDays(data.availableDays || []);

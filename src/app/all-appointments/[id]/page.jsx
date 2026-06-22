@@ -1,4 +1,6 @@
 import { AppointmentModal } from '@/components/AppointmentModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 
@@ -6,7 +8,15 @@ const DoctorDetailsPage = async ({ params }) => {
     const { id } = await params;
     // console.log(doctorsInfo)
 
-    const res = await fetch(`http://localhost:5000/doctors/${id}`);
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const res = await fetch(`http://localhost:5000/doctors/${id}`,{
+       headers:{
+            authorization: `Bearer ${token}`
+       }
+    });
     const data = await res.json();
     const { _id, name, specialty, image, experience, availability, availableDays, description, hospital, position, location, fee, degree } = data;
     // console.log(data)

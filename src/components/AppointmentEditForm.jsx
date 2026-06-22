@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import {Button, Form, Input, Label, TextField} from "@heroui/react";
+import { Button, Form, Input, Label, TextField } from "@heroui/react";
 import SelectEditOption from "./SelectEditOption";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
-  const { _id, patientName, patientContact, doctorName, doctorId, specialist} = appointment;
+  const { _id, patientName, patientContact, doctorName, doctorId, specialist } =
+    appointment;
+  const router = useRouter();
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
@@ -42,11 +44,13 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
       }),
     };
     // console.log(appointmentInfo);
+    const { data: tokenData } = await authClient.token();
 
     const res = await fetch(`http://localhost:5000/appointments/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        authorization:`Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(appointmentInfo),
     });
@@ -56,7 +60,10 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
         theme: "dark",
       });
       setOpenEditForm(false);
-      redirect("/dashboard/my-appointment");
+      router.refresh();
+      setTimeout(() => {
+        router.push("/dashboard/my-appointment");
+      }, 1000);
     } else {
       toast.error("Updated Operation Failed", {
         theme: "dark",
@@ -116,7 +123,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           onSelectionChange={(val) => setSelectedTime(val)}
           appointment={appointment}
         ></SelectEditOption>
-        <div className="flex gap-2" >
+        <div className="flex gap-2">
           <Button type="submit">
             {/* <Check /> */}
             Submit

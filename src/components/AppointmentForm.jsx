@@ -9,11 +9,12 @@ import {
 import { SelectOptions } from "./SelectOptions";
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
-import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export function AppointmentForm({ data, setOpenAppointmentModal }) {
   const { _id, name, specialty } = data;
+  const router= useRouter();
 
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -49,6 +50,7 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
       }),
     };
     // console.log(appointmentInfo);
+    const {data: tokenData}= await authClient.token();
 
     const res = await fetch(
       `http://localhost:5000/doctors/${_id}/appointments`,
@@ -56,17 +58,22 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`
         },
         body: JSON.stringify(appointmentInfo),
       },
     );
     const data = await res.json();
+    console.log(data);
     if (res.ok) {
       toast.success("Doctor Appointment Booked Successfully", {
         theme: "dark",
       });
       setOpenAppointmentModal(false);
-      redirect("/dashboard/my-appointment");
+      router.refresh();
+      setTimeout(() => {
+        router.push("/dashboard/my-appointment");
+      }, 1000);
     } else {
       toast.error("Doctor Appointment Failed", {
         theme: "dark",
