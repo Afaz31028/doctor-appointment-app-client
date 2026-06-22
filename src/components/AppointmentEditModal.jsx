@@ -1,12 +1,14 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import {Button, Modal} from "@heroui/react";
 import AppointmentEditForm from './AppointmentEditForm';
 
 const AppointmentEditModal = ({appointment}) => {
+    const [openEditForm, setOpenEditForm] = useState(false);
     return (
         <div>
-            <Modal>
-                  <Button className={'bg-green-500 w-30'} appointment={appointment}>Edit</Button>
+            <Modal isOpen={openEditForm} onOpenChange={setOpenEditForm}>
+                  <Button className={'bg-green-500 w-30'} appointment={appointment} onPress={() => setOpenEditForm(true)} >Edit</Button>
                   <Modal.Backdrop>
                     <Modal.Container>
                       <Modal.Dialog className="sm:max-w-[450px] px-15 bg-gray-300">
@@ -15,7 +17,7 @@ const AppointmentEditModal = ({appointment}) => {
                           <Modal.Heading className="text-2xl text-bold my-3 text-center">Update Doctor Appointment</Modal.Heading>
                         </Modal.Header>
                         <Modal.Body>
-                          <AppointmentEditForm appointment={appointment}></AppointmentEditForm>
+                          <AppointmentEditForm appointment={appointment} setOpenEditForm={setOpenEditForm}></AppointmentEditForm>
                         </Modal.Body>
                       </Modal.Dialog>
                     </Modal.Container>

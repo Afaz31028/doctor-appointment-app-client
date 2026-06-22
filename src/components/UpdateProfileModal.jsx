@@ -2,14 +2,12 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, Modal } from "@heroui/react";
 import { Form, Input, Label, TextField } from "@heroui/react";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export function UpdateModal({user}) {
-    const router= useRouter();
-    const [isOpen, setIsOpen] = useState(false);
-    const [loading, setLoading] = useState(false)
+export function UpdateProfileModal({ user }) {
+  const [open, setOpen] = useState(false);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -17,22 +15,27 @@ export function UpdateModal({user}) {
     const userData = Object.fromEntries(formData.entries());
     const { data, error } = await authClient.updateUser({
       name: userData.name,
-      image: userData.image
+      image: userData.image,
     });
     console.log({ data, error });
     if (data) {
-        toast.success("Profile Updated Successfully")
-        setIsOpen(false);
-        router.push("/dashboard/profile");
+      toast.success("Profile Updated Successfully");
+      setOpen(false);
+      redirect('/dashboard/profile')
     }
-    if(error) {
+    if (error) {
       toast.error("Update Failed");
+      return;
     }
-    setLoading(false);
   };
   return (
-    <Modal isOpen={isOpen}>
-      <Button className={"w-50 px-8 rounded-none"}>Update Profile</Button>
+    <Modal isOpen={open} onOpenChange={setOpen}>
+      <Button
+        className={"w-50 px-8 rounded-none"}
+        onPress={() => setOpen(true)}
+      >
+        Update Profile
+      </Button>
       <Modal.Backdrop>
         <Modal.Container>
           <Modal.Dialog className="sm:max-w-90">
@@ -43,7 +46,10 @@ export function UpdateModal({user}) {
               </Modal.Heading>
             </Modal.Header>
             <Modal.Body>
-              <Form className="flex w-full flex-col gap-4 px-5" onSubmit={handleUpdate}>
+              <Form
+                className="flex w-full flex-col gap-4 px-5"
+                onSubmit={handleUpdate}
+              >
                 <TextField name="name" type="text" defaultValue={user?.name}>
                   <Label>User Name</Label>
                   <Input
@@ -68,7 +74,7 @@ export function UpdateModal({user}) {
                   />
                 </TextField>
                 <div className="flex justify-center my-4 ">
-                  <Button variant="danger" className={"w-45"} type="submit" isLoading={loading}>
+                  <Button variant="danger" className={"w-45"} type="submit">
                     Submit
                   </Button>
                 </div>

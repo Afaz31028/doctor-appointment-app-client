@@ -1,8 +1,6 @@
 "use client";
 import {
   Button,
-  Description,
-  FieldError,
   Form,
   Input,
   Label,
@@ -14,13 +12,11 @@ import { useState } from "react";
 import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
 
-export function AppointmentForm({ data }) {
+export function AppointmentForm({ data, setOpenAppointmentModal }) {
   const { _id, name, specialty } = data;
 
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false)
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
@@ -69,18 +65,17 @@ export function AppointmentForm({ data }) {
       toast.success("Doctor Appointment Booked Successfully", {
         theme: "dark",
       });
-      setIsOpen(false);
+      setOpenAppointmentModal(false);
       redirect("/dashboard/my-appointment");
     } else {
       toast.error("Doctor Appointment Failed", {
         theme: "dark",
       });
     }
-     setLoading(false);
   };
 
   return (
-    <Form className="flex flex-col gap-4" onSubmit={onSubmit} isOpen={isOpen}>
+    <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
       <TextField isRequired name="name" type="text">
         <Label>Patient Name</Label>
         <Input placeholder="Afazur Rahman" />
@@ -119,11 +114,8 @@ export function AppointmentForm({ data }) {
         onSelectionChange={(val) => setSelectedTime(val)}
         data={data}
       ></SelectOptions>
-      <div className="flex gap-2" isLoading={loading}>
-        <Button type="submit">
-          {/* <Check /> */}
-          Submit
-        </Button>
+      <div className="flex gap-2">
+        <Button type="submit">Submit</Button>
       </div>
     </Form>
   );

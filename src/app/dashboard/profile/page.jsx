@@ -1,4 +1,4 @@
-import { UpdateModal } from "@/components/UpdateProfileModal";
+import { UpdateProfileModal } from "@/components/UpdateProfileModal";
 import { auth } from "@/lib/auth";
 import { Button } from "@heroui/react";
 import { headers } from "next/headers";
@@ -52,7 +52,7 @@ const MyProfilePage = async () => {
             </span>
           </p>
           <div className="mt-8 flex justify-center">
-            <UpdateModal user={user}></UpdateModal>
+            <UpdateProfileModal user={user}></UpdateProfileModal>
           </div>
         </div>
       </div>

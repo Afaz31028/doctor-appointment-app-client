@@ -1,38 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Button,
-  Description,
-  FieldError,
-  Form,
-  Input,
-  Label,
-  TextField,
-} from "@heroui/react";
+import {Button, Form, Input, Label, TextField} from "@heroui/react";
 import SelectEditOption from "./SelectEditOption";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
-const AppointmentEditForm = ({ appointment }) => {
-  const {
-    _id,
-    patientName,
-    patientContact,
-    doctorName,
-    doctorId,
-    specialist,
-    appointmentDay,
-    appointmentTime,
-  } = appointment;
+const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
+  const { _id, patientName, patientContact, doctorName, doctorId, specialist} = appointment;
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(false)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -74,19 +55,19 @@ const AppointmentEditForm = ({ appointment }) => {
       toast.success("Doctor Appointment Updated Successfully", {
         theme: "dark",
       });
-      setIsOpen(false);
+      setOpenEditForm(false);
       redirect("/dashboard/my-appointment");
     } else {
       toast.error("Updated Operation Failed", {
         theme: "dark",
       });
+      return;
     }
-    setLoading(false);
   };
 
   return (
     <div>
-      <Form className="flex flex-col gap-4" m onSubmit={onSubmit} isOpen={isOpen}>
+      <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
         <TextField
           isRequired
           name="name"
@@ -135,7 +116,7 @@ const AppointmentEditForm = ({ appointment }) => {
           onSelectionChange={(val) => setSelectedTime(val)}
           appointment={appointment}
         ></SelectEditOption>
-        <div className="flex gap-2" isLoading={loading}>
+        <div className="flex gap-2" >
           <Button type="submit">
             {/* <Check /> */}
             Submit
