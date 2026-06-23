@@ -82,14 +82,14 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
   };
 
   return (
-    <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+    <Form className="flex flex-col gap-4 pb-3" onSubmit={onSubmit}>
       <TextField isRequired name="name" type="text">
         <Label>Patient Name</Label>
-        <Input placeholder="Afazur Rahman" />
+        <Input className={"border border-black"} placeholder="Enter Patient Name" />
       </TextField>
       <TextField isRequired name="phone-number" type="text">
         <Label>Phone Number</Label>
-        <Input placeholder="01631-112233" />
+        <Input className={"border border-black"} placeholder="Enter a valid phone number" />
       </TextField>
       <TextField
         isRequired
@@ -99,7 +99,7 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
         isReadOnly={true}
       >
         <Label>Department</Label>
-        <Input />
+        <Input className={"border border-black"}/>
       </TextField>
       <TextField
         isRequired
@@ -109,7 +109,7 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
         isReadOnly={true}
       >
         <Label>Doctor Name</Label>
-        <Input />
+        <Input className={"border border-black"}/>
       </TextField>
       <SelectOptions
         title="Available Day"
@@ -121,8 +121,8 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
         onSelectionChange={(val) => setSelectedTime(val)}
         data={data}
       ></SelectOptions>
-      <div className="flex gap-2">
-        <Button type="submit">Submit</Button>
+      <div className="flex gap-2 mt-5 justify-center">
+        <Button className={'w-50 rounded-2xl'} type="submit">Submit</Button>
       </div>
     </Form>
   );

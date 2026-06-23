@@ -5,7 +5,7 @@ export function SelectOptions({ title, data, onSelectionChange}) {
     return (
         <Select className="w-full" placeholder="Select one" onSelectionChange={(keys) => onSelectionChange?.([...keys].join(""))}>
             <Label>{title}</Label>
-            <Select.Trigger>
+            <Select.Trigger className={"border border-black"}>
                 <Select.Value />
                 <Select.Indicator />
             </Select.Trigger>

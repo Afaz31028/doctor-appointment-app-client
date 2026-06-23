@@ -18,7 +18,8 @@ const DoctorDetailsPage = async ({ params }) => {
     })
 
     const res = await fetch(`http://localhost:5000/doctors/${id}`,{
-       headers:{
+       headers:
+       {
             authorization: `Bearer ${token}`
        }
     });
@@ -28,38 +29,38 @@ const DoctorDetailsPage = async ({ params }) => {
 
     return (
         <div className='max-w-230 mx-auto my-20'>
-            <h1 className='text-3xl text-center font-bold text-black'>Doctor's Profile</h1>
-           <div className='flex gap-2 mt-10 text-center text-white bg-cyan-800 rounded-2xl pt-10'>
-             <div className='border-r-2 px-10 pb-10 border-black'>
+            <h1 className='text-3xl text-center font-bold text-black'><span className='border-b-2 border-black'>Doctor's Profile</span></h1>
+           <div className='flex gap-2 mt-2 text-center text-black bg-white border-black shadow-2xl rounded-2xl pt-10'>
+             <div className='border-r-2 px-10 pb-10 border-black flex-1'>
                 <div className='flex justify-center mx-auto'>
                     <Image className='w-50 h-50 border-4 border-black rounded-full' src={image} alt='name' width={50} height={50}></Image>
                 </div>
                 <div>
-                    <p className='text-2xl text-amber-400 font-extrabold mt-3'>{name}</p>
-                    <p className='text-lg font-serif text-gray-300'>{degree}</p>
-                    <p className='text-xl font-extrabold text-gray-200'>{position}</p>
-                    <p className='text-xl font-serif text-gray-300'>{hospital}</p>
-                    <p className='text-xl text-amber-600 font-extrabold mt-3'><span className='text-gray-200'>Specialist:</span> {specialty}</p>
+                    <p className='text-2xl text-blue-600 font-extrabold mt-3'>{name}</p>
+                    <p className='text-[1rem] text-black font-serif'>{degree}</p>
+                    <p className='text-xl font-extrabold text-black'>{position}</p>
+                    <p className='text-xl font-serif text-black'>{hospital}</p>
+                    <p className='text-2xl text-blue-800 font-extrabold mt-3'>{specialty}</p>
                 </div>
             </div>
-            <div className='px-10 text-start pb-10'>
-                    <p><span className='text-lg font-bold bg-emerald-600 px-1 rounded-xl'>Speciality:</span></p>
-                    <p className='text-xl font-serif'>{description}</p> 
-                    <p className='mt-2'><span className='text-lg font-bold bg-emerald-600 px-1 rounded-xl'>Experience:</span></p>
-                    <p className='text-xl font-serif'>{experience}</p>
-                    <p className='mt-2'><span className='text-lg font-bold bg-emerald-600 px-1 rounded-xl'>Available Days:</span></p>
+            <div className='px-10 text-start pb-10 flex-1'>
+                    <p><span className='text-xl font-bold text-blue-800 border-b-2 border-blue-700'>Speciality</span></p>
+                    <p className='text-lg font-serif'>{description}</p> 
+                    <p className='mt-2'><span className='text-xl font-bold text-blue-800 border-b-2 border-blue-700'>Experience:</span></p>
+                    <p className='text-lg font-serif'>{experience}</p>
+                    <p className='mt-2'><span className='text-xl font-bold text-blue-800 border-b-2 border-blue-700'>Available Days:</span></p>
                     <div className='grid grid-cols-3 gap-0'>
-                        {
-                            availableDays.map((day,index)=><p className='text-xl font-serif' key={index}>{day}</p>)
-                        }
+                    {
+                        availableDays.map((day,index)=><p className='text-lg font-serif' key={index}>{day}</p>)
+                    }
                     </div>
-                    <p className='mt-2'><span className='text-lg font-bold bg-emerald-600 px-1 rounded-xl'>Available Time:</span></p>
+                    <p className='mt-2'><span className='text-xl font-bold text-blue-800 border-b-2 border-blue-700'>Available Time:</span></p>
                     <div>
-                        {
-                            availability.map((day,index)=><p className='text-xl font-serif' key={index}>{day}</p>)
-                        }
+                    {
+                        availability.map((day,index)=><p className='text-lg font-serif' key={index}>{day}</p>)
+                    }
                     </div>
-                    <p className='mt-3'><span className='bg-amber-900 px-2 py-1 text-2xl font-bold'>Fee: {fee}tk</span></p>
+                    <p className='mt-3'><span className='text-2xl font-bold text-blue-950'>Consultation Fee: {fee}tk</span></p>
                     <AppointmentModal data={data}></AppointmentModal>
 
             </div>

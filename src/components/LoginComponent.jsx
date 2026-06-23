@@ -10,7 +10,9 @@ import {
   Separator,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { CgProfile } from "react-icons/cg";
 import { FcGoogle } from "react-icons/fc";
 
 const LoginComponent = () => {
@@ -39,14 +41,15 @@ const LoginComponent = () => {
   };
   return (
     <div>
-      <div className="flex justify-center my-15">
+      <div className="flex justify-center py-20 bg-gray-100">
         <Form
-          className="flex w-96 flex-col gap-4 bg-cyan-800 p-10 rounded-2xl"
+          className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl p-10 rounded-2xl"
           onSubmit={handleSubmit}
         >
-          <h1 className="text-2xl font-bold text-white text-center py-4">
+          <h1 className="text-2xl font-bold text-center text-black py-4">
             Login Your Account
           </h1>
+
           <TextField
             isRequired
             name="email"
@@ -58,9 +61,9 @@ const LoginComponent = () => {
               return null;
             }}
           >
-            <Label className="text-white">Email</Label>
-            <Input placeholder="Enter your email" />
-            <FieldError className={"text-amber-300"} />
+            <Label className="">Email</Label>
+            <Input className={'border border-black'} placeholder="Enter your email" />
+            <FieldError className={"text-red-600"} />
           </TextField>
           <TextField
             isRequired
@@ -80,36 +83,40 @@ const LoginComponent = () => {
               return null;
             }}
           >
-            <Label className="text-white">Password</Label>
-            <Input placeholder="Enter your password" />
-            <Description className="text-gray-200">
+            <Label>Password</Label>
+            <Input  className={'border border-black'} placeholder="Enter your password" />
+            <Description className="text-black">
               Must be at least 6 characters with 1 uppercase and 1 lowercase
             </Description>
-            <FieldError className={"text-amber-300"} />
+            <FieldError className={"text-red-600"} />
           </TextField>
-          <div className="flex gap-2">
+          <div className="flex justify-between items-center">
             <Button
               type="submit"
-              className={"w-full bg-blue-600 text-lg font-semibold"}
+              className={"w-35 bg-blue-500 rounded-xl text-lg font-semibold"}
             >
               Login
             </Button>
+            <p className="font-semibold underline">Forget Password?</p>
           </div>
           <div>
             <div className="flex items-center gap-1 my-3">
               <Separator className="flex-1" orientation="horizontal" />
-              <span className="text-amber-600 text-sm font-bold">OR</span>
-              <Separator className="flex-1" orientation="horizontal" />
+              <span className="text-sm font-bold">OR</span>
+              <Separator className="flex-1 " orientation="horizontal" />
             </div>
-            <Button
-              className="w-full mt-1"
+            <div className="flex justify-center">
+              <Button
+              className="w-55 text-center mt-2 bg-white border border-black"
               variant="tertiary"
               onClick={signInWithGoogle}
             >
               <FcGoogle />
               Sign in with Google
             </Button>
+            </div>
           </div>
+          <p className="text-blue-600 text-center underline font-semibold mt-2"><Link href={"/signup"}>Create New Account</Link></p>
         </Form>
       </div>
     </div>

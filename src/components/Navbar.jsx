@@ -3,9 +3,12 @@ import { useState } from "react";
 import {Button } from "@heroui/react"
 import { FaStethoscope } from "react-icons/fa";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname= usePathname();
+  const isActive = (path) => pathname === path;
 
   const menuItems=[
     {name:'Home', path:'/'},
@@ -14,7 +17,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#F8F8FF]">
       <header className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <button
@@ -54,19 +57,20 @@ export default function Navbar() {
         </div>
         <ul className="hidden items-center gap-4 md:flex">
             {
-                menuItems.map((menuItem,index)=><li key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
+                menuItems.map((menuItem,index)=><li className="hover:border-b-2 hover:border-b-blue-600" key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
             }
         </ul>
         <div className="hidden items-center gap-4 md:flex">
-              <Button variant="outline" className="w-full border-emerald-600 text-emerald-600 rounded-none"><Link href='/login'>Login</Link></Button>
-              <Button className="w-full rounded-none"><Link href='/signup'>Sign Up</Link></Button>
+              <Button variant="outline" className="w-25 rounded-xl border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white"><Link href='/login'>Login</Link></Button>
+              <Button className="w-25 rounded-xl"><Link href='/signup'>Sign Up</Link></Button>
+              
         </div>
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
               {
-                menuItems.map((menuItem,index)=><li key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
+                menuItems.map((menuItem,index)=><li className={isActive({menuItem})? "text-blue-600 font-bold" : ""} key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
             }
             <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
               <Button className="w-full rounded-none"><Link href='/login'>Login</Link></Button>

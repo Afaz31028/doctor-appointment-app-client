@@ -1,60 +1,24 @@
 "use client";
+import {motion} from "framer-motion"
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { MdCall } from "react-icons/md";
-
-const images = [
-    "/assets/banner-1.jpg",
-    "/assets/banner-2.jpg",
-    "/assets/banner-4.jpg",
-];
+import { Button } from "@heroui/react";
+import Link from "next/link";
 
 export default function Banner() {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % images.length);
-        }, 3000); // change every 3 seconds
-
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-        <div className="relative max-w-full mx-auto h-180 overflow-hidden">
-            <AnimatePresence mode="wait">
-                <motion.img
-                    key={index}
-                    src={images[index]}
-                    alt="banner"
-                    className="absolute w-full h-full object-cover blur-out-lg"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 3 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeInOut"}}
-                />
-            </AnimatePresence>
-
-            {/* Text Content */}
-            <div className="relative max-w-2xl">
-                <div className="absolute left-0 top-0 z-12 flex justify-center items-center mt-0 w-175 h-200 px-20 bg-black/5 backdrop-blur-sm border-none">
-                <div className="text-white">
-                    <h1 className="text-8xl font-bold">Welcome</h1>
-                    <p className="mt-4 text-4xl ">Recieves The best Sevices</p>
-                    <p className="mt-4 text-4xl">For Appointment, Visit Our Website</p>
-                    <p className="mt-15 text-4xl font-extrabold text-amber-500">Our Helpline: (8am to 9pm)</p>
-                    <div className="flex gap-1 items-center mt-2 text-2xl font-extrabold">
-                        <MdCall className="text-4xl font-bold" />
-                        <p>+08801715-111222</p>
-                    </div>
-                    <div className="flex gap-1 items-center mt-2 text-2xl font-extrabold">
-                        <MdCall className="text-4xl font-bold"/>
-                        <p>+08801815-111222</p>
-                    </div>
-                </div>
-            </div>
-            </div>
+  return (
+    <div className="relative max-w-full mx-auto h-180 overflow-hidden bg-[url('/assets/banner-1.jpg')] bg-cover">
+      {/* Text Content */}
+      <div className="relative max-w-full">
+        <div className="absolute left-10 top-25 z-12 text-center">
+          <div className="text-[#F0FFFF] bg-black/15 px-10 py-25 rounded-2xl">
+            <motion.h1 style={{overflow:"hidden", whiteSpace:"nowrap"}} initial={{width:0}} animate={{width:"100%"}} transition={{duration:5, ease:"easeInOut"}} className="text-8xl font-bold">Welcome</motion.h1>
+            <p className="mt-10 text-4xl font-serif text-amber-400">Recieves The best Sevices</p>
+            <p className="mt-4 text-4xl font-serif text-amber-400">We Provide The Best Treatment</p>
+            <p className="text-3xl font-serif mt-10">For Appointment</p>
+            <Button className={'mt-5 w-50 rounded-xl'}><Link href={'/all-appointments'}>Book an Appointment</Link></Button>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }

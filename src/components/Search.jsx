@@ -5,7 +5,7 @@ import { SearchField } from "@heroui/react";
 export function Search({ onSearch }) {
   return (
     <SearchField name="search" aria-label="Search doctors">
-      <SearchField.Group className="bg-gray-200 border border-black">
+      <SearchField.Group className="bg-[#F8F8FF] border border-black">
         <SearchField.SearchIcon />
 
         <SearchField.Input

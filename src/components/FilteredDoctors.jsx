@@ -16,7 +16,7 @@ const FilteredDoctors = ({ data }) => {
 
   return (
     <div>
-      <div className="flex my-15 justify-between items-center px-10">
+      <div className="flex my-15 justify-between items-center px-20">
         <p className="text-3xl font-bold">All Appointments</p>
         <Search onSearch={handleSearch} />
       </div>
