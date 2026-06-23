@@ -4,6 +4,11 @@ import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 
+export const metadata = {
+  title: "Alpha | Doctor Info",
+  description: "This page describles a specific doctor details",
+};
+
 const DoctorDetailsPage = async ({ params }) => {
     const { id } = await params;
     // console.log(doctorsInfo)

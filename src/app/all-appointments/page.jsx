@@ -2,6 +2,11 @@ import DoctorCard from '@/components/DoctorCard';
 import { getAllDoctorsInfo } from '@/lib/data';
 import React from 'react';
 
+export const metadata = {
+  title: "Alpha | All Appointments",
+  description: "This page includes all available doctors info",
+};
+
 const AllAppointmentsPage = async () => {
 
     const data= await getAllDoctorsInfo();
