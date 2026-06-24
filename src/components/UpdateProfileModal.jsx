@@ -19,7 +19,9 @@ export function UpdateProfileModal({ user }) {
     });
     console.log({ data, error });
     if (data) {
-      toast.success("Profile Updated Successfully");
+      toast.success("Profile Updated Successfully",{
+        theme:"dark"
+      });
       setOpen(false);
       redirect('/dashboard/profile')
     }
@@ -30,12 +32,7 @@ export function UpdateProfileModal({ user }) {
   };
   return (
     <Modal isOpen={open} onOpenChange={setOpen}>
-      <Button
-        className={"w-50 px-8 rounded-none"}
-        onPress={() => setOpen(true)}
-      >
-        Update Profile
-      </Button>
+      <Button className={"w-50 px-8 rounded-xl"} onPress={() => setOpen(true)}>Update Your Profile</Button>
       <Modal.Backdrop>
         <Modal.Container>
           <Modal.Dialog className="sm:max-w-90">
@@ -53,7 +50,7 @@ export function UpdateProfileModal({ user }) {
                 <TextField name="name" type="text" defaultValue={user?.name}>
                   <Label>User Name</Label>
                   <Input
-                    className={"bg-black text-white"}
+                    className={"border border-black"}
                     placeholder="Enter Your Name"
                   />
                 </TextField>
@@ -64,17 +61,17 @@ export function UpdateProfileModal({ user }) {
                   isReadOnly={true}
                 >
                   <Label>Email</Label>
-                  <Input className={"bg-black text-white"} />
+                  <Input className={"border border-black"} />
                 </TextField>
                 <TextField name="image" type="text" defaultValue={user?.image}>
                   <Label>Image URL</Label>
                   <Input
-                    className={"bg-black text-white"}
+                    className={"border border-black"}
                     placeholder="Provide A valid Link"
                   />
                 </TextField>
                 <div className="flex justify-center my-4 ">
-                  <Button variant="danger" className={"w-45"} type="submit">
+                  <Button className={"w-45 rounded-xl"} type="submit">
                     Submit
                   </Button>
                 </div>

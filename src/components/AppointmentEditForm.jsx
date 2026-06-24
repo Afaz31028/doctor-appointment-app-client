@@ -82,7 +82,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           defaultValue={patientName}
         >
           <Label>Patient Name</Label>
-          <Input placeholder="Afazur Rahman" />
+          <Input className={"border border-black"} placeholder="Afazur Rahman" />
         </TextField>
         <TextField
           isRequired
@@ -91,7 +91,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           defaultValue={patientContact}
         >
           <Label>Phone Number</Label>
-          <Input placeholder="01631-112233" />
+          <Input className={"border border-black"} placeholder="01631-112233" />
         </TextField>
         <TextField
           isRequired
@@ -101,7 +101,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           isReadOnly={true}
         >
           <Label>Department</Label>
-          <Input />
+          <Input className={"border border-black"}/>
         </TextField>
         <TextField
           isRequired
@@ -111,7 +111,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           isReadOnly={true}
         >
           <Label>Doctor Name</Label>
-          <Input />
+          <Input className={"border border-black"}/>
         </TextField>
         <SelectEditOption
           title="Available Day"
@@ -123,8 +123,8 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           onSelectionChange={(val) => setSelectedTime(val)}
           appointment={appointment}
         ></SelectEditOption>
-        <div className="flex gap-2">
-          <Button type="submit">
+        <div className="flex gap-2 mt-5 justify-center">
+          <Button type="submit" className={'w-50 rounded-2xl'}>
             {/* <Check /> */}
             Submit
           </Button>

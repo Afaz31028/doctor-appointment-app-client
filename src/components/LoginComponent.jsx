@@ -40,8 +40,8 @@ const LoginComponent = () => {
     }
   };
   return (
-    <div>
-      <div className="flex justify-center py-20 bg-gray-100">
+    <div className="bg-gray-100">
+      <div className="flex justify-center py-20">
         <Form
           className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl p-10 rounded-2xl"
           onSubmit={handleSubmit}

@@ -11,7 +11,7 @@ const AppointmentEditModal = ({appointment}) => {
                   <Button className={'bg-green-500 w-30'} appointment={appointment} onPress={() => setOpenEditForm(true)} >Edit</Button>
                   <Modal.Backdrop>
                     <Modal.Container>
-                      <Modal.Dialog className="sm:max-w-[450px] px-15 bg-gray-300">
+                      <Modal.Dialog className="sm:max-w-[450px] px-15">
                         <Modal.CloseTrigger />
                         <Modal.Header>
                           <Modal.Heading className="text-2xl text-bold my-3 text-center">Update Doctor Appointment</Modal.Heading>

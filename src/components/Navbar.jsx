@@ -4,6 +4,8 @@ import {Button } from "@heroui/react"
 import { FaStethoscope } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +17,11 @@ export default function Navbar() {
     {name: 'All Appointments', path:'/all-appointments'},
     {name:'Dashboard', path:'/dashboard/my-appointment'}
   ]
+
+  const handleSignOut=async()=>{
+      toast.success("Successfully Logout",{theme:"dark"})
+      await authClient.signOut();
+  }
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#F8F8FF]">
@@ -63,6 +70,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-4 md:flex">
               <Button variant="outline" className="w-25 rounded-xl border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white"><Link href='/login'>Login</Link></Button>
               <Button className="w-25 rounded-xl"><Link href='/signup'>Sign Up</Link></Button>
+              <Button onClick={handleSignOut} variant="danger" className="w-25 rounded-xl">Logout</Button>
               
         </div>
       </header>

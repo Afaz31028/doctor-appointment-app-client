@@ -27,9 +27,9 @@ const MyAppointmentPage = async() => {
     const appointmentsData= await res.json();
 
     return (
-        <div>
+        <div className='max-w-4xl mx-auto'>
             <h1 className='text-2xl font-bold text-center my-8'>Your Total Appointments: {appointmentsData.length}</h1>
-            <div className='space-y-10 mt-12 mb-20'>
+            <div className='grid grid-cols-2 gap-5 mt-12 mb-20'>
                 {
                     appointmentsData.map(appointment=><AppointmentCard key={appointment._id} appointment={appointment}></AppointmentCard>)
                 }

@@ -42,7 +42,7 @@ const SignUpComponent = () => {
     }
   };
   return (
-    <div className="bg-gray-100">
+    <div>
       <Form
         className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl px-5 pb-5 rounded-2xl"
         onSubmit={handleSubmit}
@@ -57,7 +57,7 @@ const SignUpComponent = () => {
             placeholder="Enter your name"
           />
         </TextField>
-        <TextField isRequired name="image" type="text">
+        <TextField isRequired name="image" type="url">
           <Label>Image URL</Label>
           <Input
             className={"border border-black"}

@@ -29,7 +29,7 @@ export function DeleteAppointmentModal({appointment}) {
     }
   return (
     <AlertDialog>
-      <Button variant='danger' className={'mt-5 w-30'}>Delete</Button>
+      <Button variant='danger' className={'w-30'}>Delete</Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">

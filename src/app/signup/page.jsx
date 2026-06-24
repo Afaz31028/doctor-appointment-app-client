@@ -9,7 +9,7 @@ export const metadata = {
 const SignUpPage = () => {
   
   return (
-    <div className="flex justify-center my-15">
+    <div className="flex justify-center py-15 bg-gray-100">
       <SignUpComponent></SignUpComponent>
     </div>
   );
