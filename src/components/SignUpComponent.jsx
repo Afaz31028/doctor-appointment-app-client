@@ -44,7 +44,7 @@ const SignUpComponent = () => {
   return (
     <div>
       <Form
-        className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl px-5 pb-5 rounded-2xl"
+        className="flex w-96 flex-col gap-4 text-black bg-white shadow-lg shadow-blue-600 px-5 pb-5 rounded-2xl"
         onSubmit={handleSubmit}
       >
         <h1 className="text-2xl font-bold text-center text-black py-4">

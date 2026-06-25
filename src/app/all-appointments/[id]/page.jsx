@@ -30,7 +30,7 @@ const DoctorDetailsPage = async ({ params }) => {
     return (
         <div className='max-w-230 mx-auto my-20'>
             <h1 className='text-3xl text-center font-bold text-black'><span className='border-b-2 border-black'>Doctor's Profile</span></h1>
-           <div className='flex gap-2 mt-2 text-center text-black bg-white border-black shadow-2xl rounded-2xl pt-10'>
+           <div className='flex gap-2 mt-2 text-center text-black bg-white border-black shadow-lg shadow-blue-800 rounded-2xl pt-10'>
              <div className='border-r-2 px-10 pb-10 border-black flex-1'>
                 <div className='flex justify-center mx-auto'>
                     <Image className='w-50 h-50 border-4 border-black rounded-full' src={image} alt='name' width={50} height={50}></Image>

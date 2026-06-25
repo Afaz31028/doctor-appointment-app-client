@@ -43,7 +43,7 @@ const LoginComponent = () => {
     <div className="bg-gray-100">
       <div className="flex justify-center py-20">
         <Form
-          className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl p-10 rounded-2xl"
+          className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl shadow-blue-600 p-10 rounded-2xl"
           onSubmit={handleSubmit}
         >
           <h1 className="text-2xl font-bold text-center text-black py-4">

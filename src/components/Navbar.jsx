@@ -1,6 +1,6 @@
-'use client'
+"use client";
 import { useState } from "react";
-import {Button } from "@heroui/react"
+import { Avatar, Button } from "@heroui/react";
 import { FaStethoscope } from "react-icons/fa";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,19 +9,22 @@ import { toast } from "react-toastify";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname= usePathname();
+  const pathname = usePathname();
   const isActive = (path) => pathname === path;
 
-  const menuItems=[
-    {name:'Home', path:'/'},
-    {name: 'All Appointments', path:'/all-appointments'},
-    {name:'Dashboard', path:'/dashboard/my-appointment'}
-  ]
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
-  const handleSignOut=async()=>{
-      toast.success("Successfully Logout",{theme:"dark"})
-      await authClient.signOut();
-  }
+  const menuItems = [
+    { name: "Home", path: "/" },
+    { name: "All Appointments", path: "/all-appointments" },
+    { name: "Dashboard", path: "/dashboard/my-appointment" },
+  ];
+
+  const handleSignOut = async () => {
+    toast.success("Successfully Logout", { theme: "dark" });
+    await authClient.signOut();
+  };
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#F8F8FF]">
@@ -59,30 +62,75 @@ export default function Navbar() {
           </button>
           <div className="flex items-center gap-1">
             <FaStethoscope className="text-3xl font-bold text-blue-800" />
-            <p className="text-2xl font-bold"><span className="text-red-600">A</span><span>LPH</span><span>A</span></p>
+            <p className="text-2xl font-bold">
+              <span className="text-red-600">A</span>
+              <span>LPH</span>
+              <span>A</span>
+            </p>
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
-            {
-                menuItems.map((menuItem,index)=><li className="hover:border-b-2 hover:border-b-blue-600" key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
-            }
+          {menuItems.map((menuItem, index) => (
+            <li
+              className="hover:border-b-2 hover:border-b-blue-600"
+              key={index}
+            >
+              <Link href={menuItem.path}>{menuItem.name}</Link>
+            </li>
+          ))}
         </ul>
-        <div className="hidden items-center gap-4 md:flex">
-              <Button variant="outline" className="w-25 rounded-xl border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white"><Link href='/login'>Login</Link></Button>
-              <Button className="w-25 rounded-xl"><Link href='/signup'>Sign Up</Link></Button>
-              <Button onClick={handleSignOut} variant="danger" className="w-25 rounded-xl">Logout</Button>
-              
-        </div>
+        {user ? (
+          <>
+            <div className="hidden items-center gap-6 md:flex">
+              <Avatar className="">
+                <Avatar.Image alt={user?.name} src={user?.image} />
+                <Avatar.Fallback className="w-13 h-13 bg-cyan-700 text-2xl text-white rounded-full">{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+              <Button
+                onClick={handleSignOut}
+                variant="danger"
+                className="w-25 rounded-xl"
+              >
+                Logout
+              </Button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="hidden items-center gap-4 md:flex">
+              <Button
+                variant="outline"
+                className="w-25 rounded-xl border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white"
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button className="w-25 rounded-xl">
+                <Link href="/signup">Sign Up</Link>
+              </Button>
+            </div>
+          </>
+        )}
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
-              {
-                menuItems.map((menuItem,index)=><li className={isActive({menuItem})? "text-blue-600 font-bold" : ""} key={index}><Link href={menuItem.path}>{menuItem.name}</Link></li>)
-            }
+            {menuItems.map((menuItem, index) => (
+              <li
+                className={
+                  isActive({ menuItem }) ? "text-blue-600 font-bold" : ""
+                }
+                key={index}
+              >
+                <Link href={menuItem.path}>{menuItem.name}</Link>
+              </li>
+            ))}
             <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Button className="w-full rounded-none"><Link href='/login'>Login</Link></Button>
-              <Button className="w-full rounded-none"><Link href='/signup'>Sign Up</Link></Button>
+              <Button className="w-full rounded-none">
+                <Link href="/login">Login</Link>
+              </Button>
+              <Button className="w-full rounded-none">
+                <Link href="/signup">Sign Up</Link>
+              </Button>
             </li>
           </ul>
         </div>
