@@ -34,7 +34,7 @@ export function UpdateProfileModal({ user }) {
     <Modal isOpen={open} onOpenChange={setOpen}>
       <Button className={"w-50 px-8 rounded-xl"} onPress={() => setOpen(true)}>Update Your Profile</Button>
       <Modal.Backdrop>
-        <Modal.Container>
+        <Modal.Container placement="center">
           <Modal.Dialog className="sm:max-w-90">
             <Modal.CloseTrigger />
             <Modal.Header>

@@ -28,10 +28,10 @@ const DoctorDetailsPage = async ({ params }) => {
     // console.log(data)
 
     return (
-        <div className='max-w-230 mx-auto my-20'>
-            <h1 className='text-3xl text-center font-bold text-black'><span className='border-b-2 border-black'>Doctor's Profile</span></h1>
-           <div className='flex gap-2 mt-2 text-center text-black bg-white border-black shadow-lg shadow-blue-800 rounded-2xl pt-10'>
-             <div className='border-r-2 px-10 pb-10 border-black flex-1'>
+        <div className='w-full md:max-w-230 mx-auto px-5 mt-10 mb-15 md:my-20'>
+            <h1 className='text-3xl text-center font-bold text-black'><span className='border-b-0 md:border-b-2 border-black'>Doctor's Profile</span></h1>
+           <div className='flex-row justify-center md:justify-start md:flex gap-2 mt-2 text-center text-black bg-white md:border-black shadow-lg shadow-blue-800 rounded-2xl pt-10'>
+             <div className='border-b-0 md:border-r-2 px-10 pb-10 md:border-black flex-1'>
                 <div className='flex justify-center mx-auto'>
                     <Image className='w-50 h-50 border-4 border-black rounded-full' src={image} alt='name' width={50} height={50}></Image>
                 </div>
@@ -43,7 +43,7 @@ const DoctorDetailsPage = async ({ params }) => {
                     <p className='text-2xl text-blue-800 font-extrabold mt-3'>{specialty}</p>
                 </div>
             </div>
-            <div className='px-10 text-start pb-10 flex-1'>
+            <div className='px-10 text-center md:text-start pb-10 flex-1'>
                     <p><span className='text-xl font-bold text-blue-800 border-b-2 border-blue-700'>Speciality</span></p>
                     <p className='text-lg font-serif'>{description}</p> 
                     <p className='mt-2'><span className='text-xl font-bold text-blue-800 border-b-2 border-blue-700'>Experience:</span></p>

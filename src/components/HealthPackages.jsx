@@ -4,11 +4,11 @@ import { TiTick } from "react-icons/ti";
 
 const HealthPackages = () => {
   return (
-    <div className="max-w-7xl mx-auto py-20">
-      <h1 className="text-4xl font-bold text-center mb-8">
+    <div className="w-full md:max-w-7xl mx-auto py-12 md:py-20">
+      <h1 className="text-3xl md:text-4xl font-bold text-center my-12 md:my-15">
         Health Check Up Packages
       </h1>
-      <div className="grid grid-cols-3 gap-10 mt-5">
+      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 gap-10 mt-5">
         <div className="w-90 h-100 rounded-2xl shadow-md shadow-amber-600 px-5 py-8 bg-gray-50">
           <h1 className="text-2xl font-bold">Basic Health Check Up</h1>
           <ul className="py-3">

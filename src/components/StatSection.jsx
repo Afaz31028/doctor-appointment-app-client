@@ -6,9 +6,9 @@ import { LiaStethoscopeSolid } from 'react-icons/lia';
 
 const StatSection = () => {
     return (
-        <div className='w-full py-20'>
-            <h1 className='text-4xl font-bold text-center mb-8'>Users Trust ALPHA</h1>
-            <div className='flex gap-10 justify-center'>
+        <div className='w-full md:max-w-6xl mx-auto pt-12 md:pt-20'>
+            <h1 className='text-3xl md:text-4xl font-bold text-center my-10 md:my-15'>Users Trust ALPHA</h1>
+            <div className='grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-4 justify-items-center'>
                 <div className='shadow-md shadow-fuchsia-500 p-5 w-60 rounded-xl text-center'>
                     <div className='flex justify-center'><p><FaUserDoctor className='text-5xl'/></p></div>
                     <p className='text-xl font-bold mt-2'>Doctors Available</p>

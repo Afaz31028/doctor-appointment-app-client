@@ -16,10 +16,10 @@ const MyProfilePage = async () => {
   });
   const user = session?.user;
   return (
-    <div className="max-w-100 mx-auto my-15">
+    <div className="w-full px-3 md:px-0 md:max-w-100 mx-auto my-15">
       <h1 className="text-3xl font-bold text-center mb-5">User Profile</h1>
       <div className="rounded-2xl p-3 border relative shadow-2xl">
-        <div className="w-94 h-40 rounded-t-2xl bg-cyan-900 shadow shadow-cyan-800">
+        <div className="w-full md:w-94 h-40 rounded-t-2xl bg-cyan-900 shadow shadow-cyan-800">
         </div>
         <div className="bg-gray-100 w-40 h-40 rounded-full border-5 border-black absolute top-25 left-30">
           {user?.image ? (

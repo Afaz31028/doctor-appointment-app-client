@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isActive = (path) => pathname === path;
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
@@ -116,23 +115,39 @@ export default function Navbar() {
           <ul className="flex flex-col gap-2 p-4">
             {menuItems.map((menuItem, index) => (
               <li
-                className={
-                  isActive({ menuItem }) ? "text-blue-600 font-bold" : ""
+                className={ pathname===menuItem.path ? "text-blue-600 font-bold" : ""
                 }
                 key={index}
               >
                 <Link href={menuItem.path}>{menuItem.name}</Link>
               </li>
             ))}
-            <li className="mt-4 flex flex-col gap-2 border-t border-separator pt-4">
-              <Button className="w-full rounded-none">
+          </ul>
+          {
+            user ? <div className="flex items-center gap-6 px-5 py-5">
+              <Avatar className="hidden">
+                <Avatar.Image alt={user?.name} src={user?.image} />
+                <Avatar.Fallback className="w-13 h-13 bg-cyan-700 text-2xl text-white rounded-full">{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+              <Button
+                onClick={handleSignOut}
+                variant="danger"
+                className="w-25 rounded-xl"
+              >
+                Logout
+              </Button>
+            </div> : <><div className="items-center gap-4 flex px-5 py-5">
+              <Button
+                variant="outline"
+                className="w-25 rounded-xl border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white"
+              >
                 <Link href="/login">Login</Link>
               </Button>
-              <Button className="w-full rounded-none">
+              <Button className="w-25 rounded-xl">
                 <Link href="/signup">Sign Up</Link>
               </Button>
-            </li>
-          </ul>
+            </div></>
+          }
         </div>
       )}
     </nav>

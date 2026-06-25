@@ -16,12 +16,12 @@ const FilteredDoctors = ({ data }) => {
 
   return (
     <div>
-      <div className="flex my-15 justify-between items-center px-20">
-        <p className="text-3xl font-bold">All Appointments</p>
+      <div className="flex flex-col-reverse md:flex-row my-15 justify-between items-center px-2 md:px-20">
+        <p className="text-3xl mt-5 md:mb-0 font-bold text-center md:text-start">All Appointments</p>
         <Search onSearch={handleSearch} />
       </div>
 
-      <div className="grid grid-cols-3 gap-10 mb-10">
+      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 gap-10 mb-10">
         {
             filteredDoctors.map((doctor) => (<DoctorCard key={doctor._id} doctor={doctor} />))}
       </div>
