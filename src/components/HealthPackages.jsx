@@ -8,7 +8,7 @@ const HealthPackages = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-center my-12 md:my-15">
         Health Check Up Packages
       </h1>
-      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 gap-10 mt-5">
+      <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-10 md:px-25 lg:px-0 mt-5">
         <div className="w-90 h-100 rounded-2xl shadow-md shadow-amber-600 px-5 py-8 bg-gray-50">
           <h1 className="text-2xl font-bold">Basic Health Check Up</h1>
           <ul className="py-3">
@@ -47,7 +47,7 @@ const HealthPackages = () => {
           </ul>
           <p className="text-2xl mt-3 font-extrabold text-center w-50 bg-green-700 px-5 py-1 rounded-xl text-white">Price: 2000tk</p>
         </div>
-        <div className="w-85 h-120 rounded-2xl shadow-md shadow-red-600 px-3 py-8 bg-gray-50">
+        <div className="w-85 h-120 rounded-2xl shadow-md shadow-red-600 px-3 py-8 md:mt-25 lg:mt-0 bg-gray-50">
           <h1 className="text-2xl font-bold">Executive Health Check Up</h1>
           <h1 className="text-2xl font-bold text-center">For Male</h1>
           <ul className="p-3">
@@ -94,7 +94,7 @@ const HealthPackages = () => {
           </ul>
           <p className="text-2xl font-extrabold text-center bg-green-700 py-1 px-2 text-white w-50 rounded-xl mt-3">Price: 2700tk</p>
         </div>
-        <div className="w-90 h-100 rounded-2xl shadow-md shadow-amber-600 px-5 py-6 bg-gray-50">
+        <div className="w-90 h-100 rounded-2xl shadow-md shadow-amber-600 px-5 py-6 md:mt-[-180px] lg:mt-0 bg-gray-50">
           <h1 className="text-2xl font-bold">Executive Health Check Up</h1>
           <h1 className="text-2xl font-bold text-center">For Female</h1>
           <ul className="py-3">

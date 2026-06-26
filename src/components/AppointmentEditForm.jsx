@@ -74,7 +74,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
 
   return (
     <div>
-      <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+      <Form className="flex flex-col gap-4 mt-5" onSubmit={onSubmit}>
         <TextField
           isRequired
           name="name"

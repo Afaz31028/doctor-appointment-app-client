@@ -3,13 +3,14 @@ import { useState } from "react";
 import { Avatar, Button } from "@heroui/react";
 import { FaStethoscope } from "react-icons/fa";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const { data: session } = authClient.useSession();
   const user = session?.user;
@@ -22,15 +23,16 @@ export default function Navbar() {
 
   const handleSignOut = async () => {
     toast.success("Successfully Logout", { theme: "dark" });
+    router.push("/");
     await authClient.signOut();
   };
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-[#F8F8FF]">
-      <header className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+      <header className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-5">
         <div className="flex items-center gap-4">
           <button
-            className="lg:hidden"
+            className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}

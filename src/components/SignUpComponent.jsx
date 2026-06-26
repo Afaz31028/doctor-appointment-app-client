@@ -42,16 +42,16 @@ const SignUpComponent = () => {
     }
   };
   return (
-    <div>
+    <div className="px-5">
       <Form
-        className="flex w-96 flex-col gap-4 text-black bg-white shadow-lg shadow-blue-600 px-5 pb-5 rounded-2xl"
+        className="flex w-full md:w-96 relative flex-col gap-4 text-black bg-white shadow-lg shadow-blue-600 px-6 pb-5 rounded-2xl"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl font-bold text-center text-black py-4">
+        <h1 className="text-2xl z-10 font-bold text-center mt-5 text-white py-4">
           Create New Account
         </h1>
         <TextField isRequired name="name" type="text">
-          <Label>User Name</Label>
+          <Label className="mt-5">User Name</Label>
           <Input
             className={"border border-black"}
             placeholder="Enter your name"
@@ -144,6 +144,8 @@ const SignUpComponent = () => {
             Login
           </Link>
         </p>
+        <div className="w-full md:w-96 h-26 z-5 rounded-t-2xl bg-blue-600 absolute top-0 left-0">
+        </div>
       </Form>
     </div>
   );

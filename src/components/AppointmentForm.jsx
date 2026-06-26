@@ -82,7 +82,7 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
   };
 
   return (
-    <Form className="flex flex-col gap-4 pb-3" onSubmit={onSubmit}>
+    <Form className="flex flex-col gap-4 mt-3 pb-3" onSubmit={onSubmit}>
       <TextField isRequired name="name" type="text">
         <Label>Patient Name</Label>
         <Input className={"border border-black"} placeholder="Enter Patient Name" />

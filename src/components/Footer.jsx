@@ -8,7 +8,7 @@ import { MdAddCall, MdDashboard } from "react-icons/md";
 const Footer = () => {
   return (
     <div className="w-full md:max-w-full bg-blue-950 text-white">
-      <div className="px-8 py-7 md:px-60 md:pt-15 md:pb-8 md:flex flex-row justify-center md:justify-between">
+      <div className="px-8 py-7 md:px-20 lg:px-60 md:pt-15 md:pb-8 md:flex flex-row justify-center md:justify-between">
         <div className="text-center md:text-start">
           <div className="flex items-center gap-1 justify-center md:justify-start">
             <FaStethoscope className="text-3xl font-bold text-blue-800" />
@@ -73,7 +73,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className="border-t border-gray-500 px-8 md:px-60 py-3 text-gray-300 md:flex flex-row justify-center md:justify-between items-center">
+      <div className="border-t border-gray-500 px-8 md:px-20 lg:px-60 py-3 text-gray-300 md:flex flex-row justify-center md:justify-between items-center">
         <p className="text-center md:text-start">&copy;copyright by alpha. All rights reserved</p>
         <div>
           <ul className="flex gap-4 items-center justify-center md:justify-start">

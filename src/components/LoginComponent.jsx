@@ -40,13 +40,13 @@ const LoginComponent = () => {
     }
   };
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 px-4">
       <div className="flex justify-center py-20">
         <Form
-          className="flex w-96 flex-col gap-4 text-black bg-white shadow-2xl shadow-blue-600 p-10 rounded-2xl"
+          className="flex w-full md:w-96 relative flex-col gap-4 text-black bg-white shadow-2xl shadow-blue-600 px-4 py-10 md:p-10 rounded-2xl"
           onSubmit={handleSubmit}
         >
-          <h1 className="text-2xl font-bold text-center text-black py-4">
+          <h1 className="text-2xl z-12 font-bold text-center text-white py-4">
             Login Your Account
           </h1>
 
@@ -116,7 +116,9 @@ const LoginComponent = () => {
             </Button>
             </div>
           </div>
-          <p className="text-blue-600 text-center underline font-semibold mt-2"><Link href={"/signup"}>Create New Account</Link></p>
+          <p className="text-center mt-2">Don't have an account?{" "}<Link className="underline font-semibold text-lg text-blue-600" href={"/signup"}>Register</Link></p>
+        <div className="w-full md:w-96 h-26 z-5 rounded-t-2xl bg-blue-600 absolute top-0 left-0">
+        </div>
         </Form>
       </div>
     </div>

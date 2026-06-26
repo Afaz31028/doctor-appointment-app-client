@@ -21,7 +21,7 @@ const FilteredDoctors = ({ data }) => {
         <Search onSearch={handleSearch} />
       </div>
 
-      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 gap-10 mb-10">
+      <div className="grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 md:px-15 space-y-6 lg:px-0 gap-10 mb-10">
         {
             filteredDoctors.map((doctor) => (<DoctorCard key={doctor._id} doctor={doctor} />))}
       </div>

@@ -5,9 +5,9 @@ import { TbRosetteDiscountCheckFilled } from 'react-icons/tb';
 
 const ServicesCards = () => {
     return (
-        <div className='w-full md:max-w-5xl mx-auto text-black pt-12 md:pt-20'>
+        <div className='w-full md:max-w-3xl lg:max-w-5xl mx-auto text-black pt-12 md:pt-20'>
            <h1 className='text-3xl md:text-4xl font-bold text-center my-10 md:my-15'>Our Commitments</h1>
-            <div className='grid grid-cols-1 justify-items-center md:grid-cols-3 gap-10 md:gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 justify-items-center lg:grid-cols-3 gap-10 md:px-10 lg:px-0 md:gap-10 lg:gap-5'>
                 <div className='w-75 h-80 px-2 py-5 shadow-md shadow-blue-700 rounded-xl transform hover:scale-110'>
                 <div className='flex justify-center'>
                     <div className='w-15 h-15 rounded-full bg-cyan-600 flex justify-center items-center'>

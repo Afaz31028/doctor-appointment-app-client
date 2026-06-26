@@ -14,7 +14,7 @@ const AllAppointmentsPage = async () => {
     const data= await getAllDoctorsInfo();
 
     return (
-        <div className='w-full md:max-w-6xl mx-auto'>
+        <div className='w-full lg:max-w-6xl mx-auto'>
             <FilteredDoctors data={data}></FilteredDoctors>
         </div>
     );

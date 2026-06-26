@@ -16,7 +16,7 @@ const AppointmentCard = ({ appointment }) => {
   // console.log(appointment);
   return (
     <div className="max-w-4xl mx-auto border px-5 py-3 rounded-2xl shadow-2xl font-serif flex justify-between items-center">
-      <div className="bg-white shadow-md shadow-blue-600 rounded-xl p-6 overflow-x-auto">
+      <div className="bg-white shadow-md shadow-blue-600 rounded-xl px-5 py-5 overflow-x-auto">
         <table className="w-full border-collapse">
           <tbody>
             <tr className="border-b">
