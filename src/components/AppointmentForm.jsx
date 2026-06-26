@@ -53,7 +53,7 @@ export function AppointmentForm({ data, setOpenAppointmentModal }) {
     const {data: tokenData}= await authClient.token();
 
     const res = await fetch(
-      `http://localhost:5000/doctors/${_id}/appointments`,
+      `http://${process.env.SERVER_URL}/doctors/${_id}/appointments`,
       {
         method: "POST",
         headers: {

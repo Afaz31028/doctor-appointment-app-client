@@ -8,7 +8,7 @@ export const getAllDoctorsInfo=async()=>{
     //         authorization: `Bearer ${token?.toke}`
     //     }
     // });
-    const res = await fetch('http://localhost:5000/doctors');
+    const res = await fetch(`http://${process.env.SERVER_URL}/doctors`);
     const data = await res.json();
     return data;
 }

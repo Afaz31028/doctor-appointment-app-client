@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const SignUpComponent = () => {
   const router = useRouter();
@@ -35,10 +36,12 @@ const SignUpComponent = () => {
     });
     console.log({ data, error });
     if (data) {
+      await authClient.signOut();
+      toast.success("An Account Created Successfully",{theme:"dark"})
       router.push("/login");
     }
     if (error) {
-      alert("Error Found");
+      toast.error("Registration Failed!",{theme:"dark"})
     }
   };
   return (
@@ -48,7 +51,7 @@ const SignUpComponent = () => {
         onSubmit={handleSubmit}
       >
         <h1 className="text-2xl z-10 font-bold text-center mt-5 text-white py-4">
-          Create New Account
+          Register
         </h1>
         <TextField isRequired name="name" type="text">
           <Label className="mt-5">User Name</Label>
@@ -84,7 +87,6 @@ const SignUpComponent = () => {
         </TextField>
         <TextField
           isRequired
-          minLength={6}
           name="password"
           type="password"
           validate={(value) => {
@@ -136,7 +138,7 @@ const SignUpComponent = () => {
           </div>
         </div>
         <p className="text-center mt-2">
-          Do you have an account?{" "}
+          Already have an account?{" "}
           <Link
             className="underline font-semibold text-lg text-blue-600"
             href={"/login"}

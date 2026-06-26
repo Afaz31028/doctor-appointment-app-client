@@ -19,7 +19,7 @@ const MyAppointmentPage = async() => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://localhost:5000/appointments/user/${user.id}`,{
+    const res = await fetch(`http://${process.env.SERVER_URL}/appointments/user/${user.id}`,{
         headers:{
             authorization: `Bearer ${token}`
         }
@@ -31,7 +31,7 @@ const MyAppointmentPage = async() => {
             <h1 className='text-2xl font-bold text-center my-8'>Your Total Appointments: {appointmentsData.length}</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-12 mb-20'>
                 {
-                    appointmentsData.map(appointment=><AppointmentCard key={appointment._id} appointment={appointment}></AppointmentCard>)
+                    appointmentsData.map((appointment, index)=><AppointmentCard key={index} appointment={appointment}></AppointmentCard>)
                 }
             </div>
         </div>

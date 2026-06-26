@@ -14,8 +14,13 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
-  const [selectedDay, setSelectedDay] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedDay, setSelectedDay] = useState(
+    appointment?.appointmentDay || "",
+  );
+  const [selectedTime, setSelectedTime] = useState(
+    appointment?.appointmentTime || "",
+  );
+  
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -46,11 +51,11 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
     // console.log(appointmentInfo);
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`http://localhost:5000/appointments/${_id}`, {
+    const res = await fetch(`http://${process.env.SERVER_URL}/appointments/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        authorization:`Bearer ${tokenData?.token}`,
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(appointmentInfo),
     });
@@ -82,7 +87,10 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           defaultValue={patientName}
         >
           <Label>Patient Name</Label>
-          <Input className={"border border-black"} placeholder="Afazur Rahman" />
+          <Input
+            className={"border border-black"}
+            placeholder="Afazur Rahman"
+          />
         </TextField>
         <TextField
           isRequired
@@ -101,7 +109,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           isReadOnly={true}
         >
           <Label>Department</Label>
-          <Input className={"border border-black"}/>
+          <Input className={"border border-black"} />
         </TextField>
         <TextField
           isRequired
@@ -111,20 +119,22 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
           isReadOnly={true}
         >
           <Label>Doctor Name</Label>
-          <Input className={"border border-black"}/>
+          <Input className={"border border-black"} />
         </TextField>
         <SelectEditOption
           title="Available Day"
-          onSelectionChange={(val) => setSelectedDay(val)}
+          selectedValue={selectedDay}
+          onSelectionChange={setSelectedDay}
           appointment={appointment}
         ></SelectEditOption>
         <SelectEditOption
           title="Available Time"
-          onSelectionChange={(val) => setSelectedTime(val)}
+          selectedValue={selectedTime}
+          onSelectionChange={setSelectedTime}
           appointment={appointment}
         ></SelectEditOption>
         <div className="flex gap-2 mt-5 justify-center">
-          <Button type="submit" className={'w-50 rounded-2xl'}>
+          <Button type="submit" className={"w-50 rounded-2xl"}>
             {/* <Check /> */}
             Submit
           </Button>

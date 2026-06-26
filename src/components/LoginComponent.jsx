@@ -12,8 +12,8 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { CgProfile } from "react-icons/cg";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const LoginComponent = () => {
   const router = useRouter();
@@ -33,10 +33,13 @@ const LoginComponent = () => {
     });
     console.log({ data, error });
     if (data) {
+      toast.success("Login Successfully!", {
+        theme:"dark"
+      })
       router.push("/");
     }
     if (error) {
-      alert("Error Found");
+      toast.error("Login Failed, Try Again!",{theme:"dark"})
     }
   };
   return (

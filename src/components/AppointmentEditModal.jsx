@@ -4,6 +4,7 @@ import {Button, Modal} from "@heroui/react";
 import AppointmentEditForm from './AppointmentEditForm';
 
 const AppointmentEditModal = ({appointment}) => {
+  // console.log(appointment)
     const [openEditForm, setOpenEditForm] = useState(false);
     return (
         <div>
