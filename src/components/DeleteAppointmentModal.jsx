@@ -8,7 +8,7 @@ export function DeleteAppointmentModal({appointment}) {
 
     const handleDelete =async()=>{
         const {data: tokenData} = await authClient.token();
-        const res= await fetch(`http://${process.env.SERVER_URL}/appointments/${appointment._id}`, {
+        const res= await fetch(`${process.env.SERVER_URL}/appointments/${appointment._id}`, {
             method:"DELETE",
             headers:{
                 authorization: `Bearer ${tokenData?.token}`

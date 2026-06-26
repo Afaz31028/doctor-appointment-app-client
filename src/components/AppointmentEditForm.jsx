@@ -51,7 +51,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
     // console.log(appointmentInfo);
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`http://${process.env.SERVER_URL}/appointments/${_id}`, {
+    const res = await fetch(`${process.env.SERVER_URL}/appointments/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

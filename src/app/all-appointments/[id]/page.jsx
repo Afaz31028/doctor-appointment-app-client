@@ -17,7 +17,7 @@ const DoctorDetailsPage = async ({ params }) => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://${process.env.SERVER_URL}/doctors/${id}`,{
+    const res = await fetch(`${process.env.SERVER_URL}/doctors/${id}`,{
        headers:
        {
             authorization: `Bearer ${token}`

@@ -19,7 +19,7 @@ const MyAppointmentPage = async() => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://${process.env.SERVER_URL}/appointments/user/${user.id}`,{
+    const res = await fetch(`${process.env.SERVER_URL}/appointments/user/${user.id}`,{
         headers:{
             authorization: `Bearer ${token}`
         }

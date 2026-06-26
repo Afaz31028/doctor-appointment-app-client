@@ -17,7 +17,7 @@ const SelectEditOption = ({
       const { data: tokenData } = await authClient.token();      
 
       const res = await fetch(
-        `http://${process.env.SERVER_URL}/doctors/${appointment.doctorId}`,
+        `${process.env.SERVER_URL}/doctors/${appointment.doctorId}`,
         {
           headers: {
             authorization: `Bearer ${tokenData?.token}`,
