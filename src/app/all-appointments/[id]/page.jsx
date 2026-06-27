@@ -25,7 +25,7 @@ const DoctorDetailsPage = async ({ params }) => {
     });
     const data = await res.json();
     const { _id, name, specialty, image, experience, availability, availableDays, description, hospital, position, location, fee, degree } = data;
-    // console.log(data)
+    console.log(data);
 
     return (
         <div className='w-full md:max-w-230 mx-auto px-5 mt-10 mb-15 md:my-20'>

@@ -60,6 +60,7 @@ const AppointmentEditForm = ({ appointment, setOpenEditForm }) => {
       body: JSON.stringify(appointmentInfo),
     });
     const data = await res.json();
+    console.log(data);
     if (res.ok) {
       toast.success("Doctor Appointment Updated Successfully", {
         theme: "dark",
