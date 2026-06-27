@@ -13,7 +13,6 @@ const SelectEditOption = ({
 
   useEffect(() => {
     const fetchDoctor = async () => {
-        setLoading(true);
       const { data: tokenData } = await authClient.token();      
 
       const res = await fetch(
@@ -28,7 +27,6 @@ const SelectEditOption = ({
       // console.log(data);
       setAvailableDays(data.availableDays || []);
       setAvailability(data.availability || []);
-      setLoading(false)
     };
     if (appointment?.doctorId) {
       fetchDoctor();
