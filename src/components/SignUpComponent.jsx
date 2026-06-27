@@ -34,7 +34,7 @@ const SignUpComponent = () => {
       password: userData.password,
       image: userData.image,
     });
-    console.log({ data, error });
+    // console.log({ data, error });
     if (data) {
       await authClient.signOut();
       toast.success("An Account Created Successfully",{theme:"dark"})

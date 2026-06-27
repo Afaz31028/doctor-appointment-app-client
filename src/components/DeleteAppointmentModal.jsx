@@ -15,7 +15,7 @@ export function DeleteAppointmentModal({appointment}) {
             }
         })
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         if(res.ok){
             toast.success("Delete Appointment Successfully",{
                 theme: "dark"

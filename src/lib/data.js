@@ -13,7 +13,7 @@ export const getAllDoctorsInfo = async () => {
 
     return await res.json();
   } catch (error) {
-    console.error("Doctor fetch error:", error);
+    // console.error("Doctor fetch error:", error);
     return [];
   }
 };

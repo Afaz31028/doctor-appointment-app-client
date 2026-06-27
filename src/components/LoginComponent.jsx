@@ -31,7 +31,7 @@ const LoginComponent = () => {
       email: userData.email,
       password: userData.password,
     });
-    console.log({ data, error });
+    // console.log({ data, error });
     if (data) {
       toast.success("Login Successfully!", {
         theme:"dark"

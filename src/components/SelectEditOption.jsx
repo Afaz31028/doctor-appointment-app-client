@@ -25,7 +25,7 @@ const SelectEditOption = ({
         },
       );
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       setAvailableDays(data.availableDays || []);
       setAvailability(data.availability || []);
       setLoading(false)

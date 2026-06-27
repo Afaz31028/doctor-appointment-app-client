@@ -25,7 +25,7 @@ const MyAppointmentPage = async() => {
         }
     });
     const appointmentsData= await res.json();
-    console.log(appointmentsData);
+    // console.log(appointmentsData);
 
     return (
         <div className='w-full md:max-w-4xl mx-auto'>

@@ -17,7 +17,7 @@ export function UpdateProfileModal({ user }) {
       name: userData.name,
       image: userData.image,
     });
-    console.log({ data, error });
+    // console.log({ data, error });
     if (data) {
       toast.success("Profile Updated Successfully",{
         theme:"dark"
